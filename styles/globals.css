@@ -4,7 +4,12 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 13px;
+    line-height: 19px;
+    color: #111;
+    font-family: Arial,sans-serif;
 }
+
 
 a {
   color: inherit;
@@ -13,14 +18,21 @@ a {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 1000%;
+  padding: 5px;
+}
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    
   }
   body {
-    color: white;
-    background: black;
+    
   }
 }
