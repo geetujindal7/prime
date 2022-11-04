@@ -2,10 +2,43 @@ import Image from "next/image";
 import styles from "../../styles/login.module.css";
 import Footer from "./Common/Footer";
 import Popups from "./Common/Popup";
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useEffect, useState } from "react";
+import { useAuth } from "../Context/AuthUserContext";
+import { useRouter } from "next/router";
 
 const Login = () => {
+
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  const { authUser, loading } = useAuth();
+  const router = useRouter();
+  const { signInWithEmailAndPassword } = useAuth();
+
+
+  const loginHandler = (e) => {
+    useAuth
+      e.preventDefault();
+      signInWithEmailAndPassword(email, password)
+    .then(authUser => {
+      console.log('tessst')
+      router.push('/logged_in');
+    })
+    .catch(error => {
+      console.log(error.message)
+    });
+      
+  }
+
+  useEffect(() => {
+    if (!loading && !authUser)
+      router.push('/')
+  }, [authUser, loading])
+
+
   return (
-    <form className={styles.Sign_In_container}>
+    <form onSubmit={loginHandler} className={styles.Sign_In_container}>
       <div className={styles.PrimeImage}>
         <Image
           width="150"
@@ -27,13 +60,13 @@ const Login = () => {
         <label for="Email" className={styles.label_signin}>
           Email or mobile phone number
         </label>
-        <input id="Email" className={styles.input_signIn}></input>
+        <input id="Email" type="email" onChange={(e) => setEmail(e.target.value)} value={email} className={styles.input_signIn}></input>
         <label for="password" className={styles.label_signin}>
           Password
         </label>
-        <input id="password" className={styles.input_signIn}></input>
+        <input id="password" type="password" onChange={(e) => setPassword(e.target.value)} value={password} className={styles.input_signIn}></input>
 
-        <button className={styles.signInButton}>Sign in</button>
+        <button type="submit" className={styles.signInButton}>Sign in</button>
         <p>
           By continuing, you agree to the Amazon Conditions of Use and Privacy
           Notice.
