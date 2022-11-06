@@ -2,20 +2,38 @@ import Image from "next/image";
 import styles from "../../styles/login.module.css";
 import Footer from "./Common/Footer";
 import Popups from "./Common/Popup";
-import { useSession, signIn, signOut } from "next-auth/react"
 import { useEffect, useState } from "react";
 import { useAuth } from "../Context/AuthUserContext";
 import { useRouter } from "next/router";
+import Link from 'next/link';
 
-const Login = () => {
+
+const Login = (props) => {
 
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [errorFound, setError] = useState();
+
 
   const { authUser, loading } = useAuth();
   const router = useRouter();
-  const { signInWithEmailAndPassword } = useAuth();
+  const { signInWithEmailAndPassword, sendPasswordResetEmail } = useAuth();
 
+  const handleReset = (e) => {
+    e.preventDefault()
+   if(email)
+   {
+    sendPasswordResetEmail(email).then(() => {
+      alert("Please check your mail to reset your password")
+      setError("")
+    }).catch((error) => {
+      console.log(error.message)
+    })
+   }
+   else{
+     setError("Please  enter your email")
+   }
+  }
 
   const loginHandler = (e) => {
     useAuth
@@ -27,13 +45,17 @@ const Login = () => {
     })
     .catch(error => {
       console.log(error.message)
+      setError(error.message)
     });
       
   }
 
   useEffect(() => {
+    
     if (!loading && !authUser)
       router.push('/')
+    if(authUser)
+      router.push('/logged_in')
   }, [authUser, loading])
 
 
@@ -46,6 +68,14 @@ const Login = () => {
           src="https://m.media-amazon.com/images/G/01/digital/video/avod/AV_Logo_150._CB430404026_.png"
         />
       </div>
+      {errorFound && (
+      <div className={styles.Problem}>
+        <p className={styles.ProblemText}>
+          There was a Problem
+        </p>
+        {errorFound}
+      </div>
+    )}
       <div className={styles.SignInCard}>
         <h1
           style={{
@@ -61,9 +91,12 @@ const Login = () => {
           Email or mobile phone number
         </label>
         <input id="Email" type="email" onChange={(e) => setEmail(e.target.value)} value={email} className={styles.input_signIn}></input>
-        <label for="password" className={styles.label_signin}>
+       <div style={{display: "flex", justifyContent: "space-between"}}>
+       <label for="password" className={styles.label_signin}>
           Password
         </label>
+        <p onClick={handleReset} className={styles.ResetPassword}>Forgot your Password?</p>
+       </div>
         <input id="password" type="password" onChange={(e) => setPassword(e.target.value)} value={password} className={styles.input_signIn}></input>
 
         <button type="submit" className={styles.signInButton}>Sign in</button>
@@ -85,8 +118,8 @@ const Login = () => {
         <div className={styles.a}>
           <h5>New to Amazon? </h5>
         </div>
-        <button className={styles.createAccount}>
-          Create your Amazon account
+        <button  className={styles.createAccount}>
+        <Link href="/register">Create your Amazon account</Link>
         </button>
       </div>
       <hr
@@ -98,6 +131,7 @@ const Login = () => {
         }}
       ></hr>
       <Footer />
+      
     </form>
   );
 };

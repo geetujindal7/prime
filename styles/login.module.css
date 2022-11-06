@@ -60,11 +60,6 @@
     margin-bottom: 20px;
 }
 
-.Popover{
-    /* width: 1000px;
-    height: 200px; */
-}
-
 .a{
     text-align: center;
     position: relative;
@@ -108,5 +103,31 @@
     width: 100%;
     box-shadow: 0 1px 0 rgb(255 255 255 / 50%), 0 1px 0 rgb(0 0 0 / 7%) inset;
 }
+.AlreadyAccount{
+    margin-top: 25px;
+    display: flex;
+}
 
+.Problem{
+    border-radius: 5px;
+    height: 30%;
+    margin: auto;
+    border: 1px solid red;
+    box-shadow: 0 0 0 4px #fcf4f4 inset;
+    padding: 14px 18px;
+}
 
+.ProblemText{
+    color: #c40000;   
+     font-weight: 400;
+    font-size: 17px;
+    line-height: 1.255;
+    padding-bottom: 4px;
+
+}
+
+.ResetPassword{
+    font-size: 13px;
+    text-decoration: none;
+    color: #0066c0;
+}

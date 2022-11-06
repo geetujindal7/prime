@@ -3,25 +3,23 @@ import Firebase from '../../firebase/clientApp';
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
-  email: user.email
+  email: user.email,
 });
 
 export default function useFirebaseAuth() {
   const [authUser, setAuthUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const Clear = () => {
+    setAuthUser(null);
+    setLoading(true);
+  };
   const authStateChanged = async (authState) => {
     if (!authState) {
       setAuthUser(null)
       setLoading(false)
       return;
     }
-
-    const clear = () => {
-        setAuthUser(null);
-        setLoading(true);
-      };
-    
 
     setLoading(true)
     var formattedUser = formatAuthUser(authState);
@@ -35,8 +33,12 @@ export default function useFirebaseAuth() {
 const createUserWithEmailAndPassword = (email, password) =>
   Firebase.auth().createUserWithEmailAndPassword(email, password);
 
-// const signOut = () =>
-//   Firebase.auth().signOut().then(clear);
+const signOut = () =>
+  Firebase.auth().signOut().then(Clear);
+
+  console.log(authUser)
+  const sendPasswordResetEmail = (email, authUser) =>
+  Firebase.auth().sendPasswordResetEmail(email, authUser);
 
 // listen for Firebase state change
   useEffect(() => {
@@ -49,6 +51,7 @@ const createUserWithEmailAndPassword = (email, password) =>
     loading,
     signInWithEmailAndPassword,
      createUserWithEmailAndPassword,
-    // signOut
+     signOut,
+     sendPasswordResetEmail
   };
 }

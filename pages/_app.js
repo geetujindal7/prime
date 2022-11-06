@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { AuthUserProvider } from '../src/Context/AuthUserContext'
 import '../styles/globals.css'
 
