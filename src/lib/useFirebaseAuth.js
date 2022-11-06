@@ -4,6 +4,8 @@ import Firebase from '../../firebase/clientApp';
 const formatAuthUser = (user) => ({
   uid: user.uid,
   email: user.email,
+  displayName: user.displayName,
+  emailVerified: user.emailVerified
 });
 
 export default function useFirebaseAuth() {
@@ -36,10 +38,12 @@ const createUserWithEmailAndPassword = (email, password) =>
 const signOut = () =>
   Firebase.auth().signOut().then(Clear);
 
-  console.log(authUser)
   const sendPasswordResetEmail = (email, authUser) =>
   Firebase.auth().sendPasswordResetEmail(email, authUser);
 
+  const sendEmailVerification = () => {
+    Firebase.auth().sendEmailVerification();
+  }
 // listen for Firebase state change
   useEffect(() => {
     const unsubscribe = Firebase.auth().onAuthStateChanged(authStateChanged);
@@ -52,6 +56,7 @@ const signOut = () =>
     signInWithEmailAndPassword,
      createUserWithEmailAndPassword,
      signOut,
-     sendPasswordResetEmail
+     sendPasswordResetEmail,
+     sendEmailVerification,
   };
 }

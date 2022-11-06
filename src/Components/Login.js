@@ -8,12 +8,24 @@ import { useRouter } from "next/router";
 import Link from 'next/link';
 
 
-const Login = (props) => {
+function getStorageValue(key, defaultValue) {
+  // getting stored value
+  if(typeof window !== 'undefined')
+  {
+  const saved = sessionStorage.getItem('login');
+  const initial = JSON.parse(saved);
+  return initial || defaultValue;
+  }
+}
+const Login = () => {
+
 
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [errorFound, setError] = useState();
-
+  const [login, setLogin] = useState(() => {
+    return getStorageValue('login', false);
+  });
 
   const { authUser, loading } = useAuth();
   const router = useRouter();
@@ -36,27 +48,36 @@ const Login = (props) => {
   }
 
   const loginHandler = (e) => {
-    useAuth
       e.preventDefault();
       signInWithEmailAndPassword(email, password)
-    .then(authUser => {
-      console.log('tessst')
-      router.push('/logged_in');
+    .then(userData => {
+      userData.user.sendEmailVerification();      
+      if(userData.user.emailVerified)
+      {   
+        setLogin(true)
+         router.push('/logged_in')
+      }
+      else{
+        alert("Please verify your email")
+      }
     })
     .catch(error => {
-      console.log(error.message)
       setError(error.message)
     });
       
   }
 
   useEffect(() => {
-    
     if (!loading && !authUser)
+    {
+      setLogin(false)
       router.push('/')
-    if(authUser)
+    }
+    else if(login){
       router.push('/logged_in')
-  }, [authUser, loading])
+    }
+    sessionStorage.setItem('login', JSON.stringify(login));
+  }, [authUser, loading, login])
 
 
   return (

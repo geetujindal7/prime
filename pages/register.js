@@ -20,7 +20,6 @@ const Register = () => {
   const registerHandler = (e) => {
     useAuth
       e.preventDefault();
-
       if(password.length < 6)
       {
         setError("Passwords must be at least 6 characters.")
@@ -28,28 +27,20 @@ const Register = () => {
       }
 
       if(password === ReEnterpassword)
-      createUserWithEmailAndPassword(email, password, name)
-      .then(authUser => {
-        console.log("Success. The user is created in Firebase")
-        router.push({
-          pathname: '/logged_in',
-          query: {"name": name}
-        })
-      })
+      createUserWithEmailAndPassword(email, password)
+      .then(userData => {
+        userData.user.updateProfile({
+          displayName: name
+       })
+               router.push('/')
+    })
     .catch(error => {
-      console.log(error.message)
       setError(error.message)
     });
     else{
       setError("Please enter the same password");
     } 
   }
-
-  useEffect(() => {
-    if(authUser)
-    router.push('/logged_in')
-  }, [authUser])
-
 
   return (
     <>
