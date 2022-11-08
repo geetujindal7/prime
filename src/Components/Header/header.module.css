@@ -30,3 +30,19 @@
     font-family: Amazon Ember,Amazon Arabic Ember,Arial,sans-serif!important;
     cursor: pointer;
 }
+
+ .searchIcon{
+    border: 1px solid #8197a4;
+    width: 250px;
+    height: 40px;
+    background-color: #0f171e;
+    color: white;
+    font-size: 17px;
+    padding: 10px 40px;
+} 
+
+.icons
+{
+    position: relative;
+    right: 250px;
+}
