@@ -45,4 +45,17 @@
 {
     position: relative;
     right: 250px;
+    top:3px
+}
+
+.name{
+    color: rgba(242,244,246,.7);
+    display: block;
+    font-size: 15px;
+    line-height: 22px;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 5px 
 }

@@ -1,24 +1,45 @@
-import { useState } from 'react'
-import styles from './header.module.css'
+import Image from "next/image";
+import { useState } from "react";
+import styles from "./header.module.css";
+import { useAuth } from "../../Context/AuthUserContext";
 
 function SignInHeader() {
-    const [searchIcon, setSearchIcon] = useState(false)
+  const { authUser } = useAuth();
+  const [searchIcon, setSearchIcon] = useState(false);
 
   return (
-    <div style={{
-    display: "flex",
-    padding:"10px"        
-    }}>
-       {/* <div className={styles.search_field}>
-    <input name="q" />
-    <button type="submit"><img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698956-icon-111-search-512.png" alt="Search" width={32} height={32}/></button>
-</div> */}
-
-{searchIcon && <input className={styles.searchIcon} placeholder="Search" type="text"/>}
-<img className= {searchIcon ? styles.icons : styles.icon} onClick={() => setSearchIcon(!searchIcon)} src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698956-icon-111-search-512.png" alt="" width={40} height={40}/>     
+    <div
+      style={{
+        display: "flex",
+        padding: "10px",
+      }}
+    >
+      {searchIcon && (
+        <input className={styles.searchIcon} placeholder="Search" type="text" />
+      )}
+      <img
+        className={searchIcon ? styles.icons : styles.icon}
+        onClick={() => setSearchIcon(!searchIcon)}
+        src="http://www.clker.com/cliparts/w/r/Q/0/x/D/search-icon-light-grey.svg"
+        alt=""
+        width={40}
+        height={30}
+      />
+      <div
+        style={{
+          display: "flex",
+          marginLeft: "10px",
+        }}
+      >
+        <Image
+          src="https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-1.png"
+          width={32}
+          height={32}
+        />
+        <h3 className={styles.name}>{authUser?.displayName}</h3>
+      </div>
     </div>
-
-  )
+  );
 }
 
-export default SignInHeader
+export default SignInHeader;
