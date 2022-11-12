@@ -5,17 +5,21 @@ import { useAuth } from '../src/Context/AuthUserContext';
 import Header from '../src/Components/Header/Header';
 import styles from '../styles/main.module.css'
 import { AppContext } from '../src/Context/ApiContext';
+import SlideBar from '../src/Components/Common/SlideBar';
 
 
 
 const LoggedIn = ({}) => {
     const context = useContext(AppContext)
-    console.log(context)
-  const { authUser, loading, signOut } = useAuth();
+
+  const { authUser } = useAuth();
   const router = useRouter();
   console.log("auth", authUser)
 
-
+  useEffect(() => {
+     context.HandlePageNo("Top250Movies")
+  }, [context])
+    
   return (
       <>
       <Head>
@@ -26,7 +30,7 @@ const LoggedIn = ({}) => {
     <div className={styles.HeaderContainer}>
     <Header />
     </div>
-   
+    <SlideBar />
     </>
   )
 }
