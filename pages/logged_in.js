@@ -6,6 +6,7 @@ import Header from '../src/Components/Header/Header';
 import styles from '../styles/main.module.css'
 import { AppContext } from '../src/Context/ApiContext';
 import SlideBar from '../src/Components/Common/SlideBar';
+import Elements from '../src/Components/Elements';
 
 
 
@@ -31,6 +32,7 @@ const LoggedIn = ({}) => {
     <Header />
     </div>
     <SlideBar />
+    <Elements />
     </>
   )
 }
