@@ -54,17 +54,17 @@ const SlideBar = () => {
   };
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(
-        `https://imdb-api.com/en/API/Search/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/night`
-      );
-      const data = await res.json();
-      //const results = data.items;
-      setResult(data);
-      console.log(result);
-      setLoading(false);
-    }
-    fetchData();
+    // async function fetchData() {
+    //   const res = await fetch(
+    //     `https://imdb-api.com/en/API/Search/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/night`
+    //   );
+    //   const data = await res.json();
+    //   //const results = data.items;
+    //   setResult(data);
+    //   console.log(result);
+    //   setLoading(false);
+    // }
+    // fetchData();
   }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -127,7 +127,7 @@ const SlideBar = () => {
               style={{
                 backgroundImage: `url(${result?.results[currentIndex].image})`,
                 width: "60%",
-                height: "350px",
+                height: "285px",
                 borderRadius: "0px 0px 1000px 0px",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",

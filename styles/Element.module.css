@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    scroll-behavior: scroll;
+    margin: 0px 0px 0px 40px;
+    overflow: scroll;
+}
+
+.image_container{
+    width: 350px;
+    height: 200px;
+    margin: 4px;
+     border-radius: 3px
+}
+
+.recc {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 24px;
+    padding: 0;
+    color: white;
+    margin-left: 40px;
+}
