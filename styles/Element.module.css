@@ -1,7 +1,7 @@
 .container {
     display: flex;
     scroll-behavior: scroll;
-    margin: 0px 0px 0px 40px;
+    margin: 20px 0px 0px 40px;
     overflow: scroll;
 }
 

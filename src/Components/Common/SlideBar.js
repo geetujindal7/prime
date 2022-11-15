@@ -53,19 +53,19 @@ const SlideBar = () => {
     color: "white",
   };
 
-  useEffect(() => {
-    // async function fetchData() {
-    //   const res = await fetch(
-    //     `https://imdb-api.com/en/API/Search/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/night`
-    //   );
-    //   const data = await res.json();
-    //   //const results = data.items;
-    //   setResult(data);
-    //   console.log(result);
-    //   setLoading(false);
-    // }
-    // fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const res = await fetch(
+  //       `https://imdb-api.com/en/API/Search/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/night`
+  //     );
+  //     const data = await res.json();
+  //     //const results = data.items;
+  //     setResult(data);
+  //     console.log(result);
+  //     setLoading(false);
+  //   }
+  //   fetchData();
+  // }, []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const goToPrevious = () => {

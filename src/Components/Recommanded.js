@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Element.module.css";
+import Reco from "./Recommand/Reco";
+import Reco2 from "./Recommand/Reco2";
 
 function Elements() {
-  const [data, setdata] = useState({
+  const [data, setdata] = useState(
+    {
     items: [
       {
         id: "tt15791034",
@@ -1306,23 +1309,23 @@ function Elements() {
       },
     ],
     errorMessage: "",
-  });
-  const [Loading, setLoading] = useState(true);
-  const [mouseHover, setMouseHover] = useState(false)
+  }
+  );
+    // useEffect(() => {
+    //   async function fetchData() {
+    //     const res = await fetch(
+    //       `https://imdb-api.com/en/API/MostPopularMovies/${process.env.NEXT_PUBLIC_RAPID_API_HOST}`
+    //     );
+    //     const data = await res.json();
+    //     console.log(data);
+    //     //const results = data.items;
+    //     setdata(data);
+    //   }
+    //   fetchData();
+    // }, []);
 
-  //   useEffect(() => {
-  //     async function fetchData() {
-  //       const res = await fetch(
-  //         `https://imdb-api.com/en/API/MostPopularMovies/${process.env.NEXT_PUBLIC_RAPID_API_HOST}`
-  //       );
-  //       const data = await res.json();
-  //       console.log(data);
-  //       //const results = data.items;
-  //       setdata(data);
-  //       setLoading(false);
-  //     }
-  //     fetchData();
-  //   }, []);
+  
+
 
   return (
     <>
@@ -1330,38 +1333,14 @@ function Elements() {
       <div className={styles.container}>
         {data?.items?.map((element, index) => {
           return (
-            <div key={index}>
-              <ul>
-                {index % 2 == 0 && (
-                  <li>
-                   {mouseHover ? <MouseHover id = {element.id}/> : <img
-                      className={styles.image_container}
-                      src={element.image}
-                      alt=""
-                    />}
-                  </li>
-                )}
-              </ul>
-            </div>
+           <Reco element={element} index={index}/>
           );
         })}
       </div>
       <div className={styles.container}>
         {data?.items?.map((element, index) => {
           return (
-            <div key={index}>
-              <ul>
-                {index % 2 !== 0 && (
-                  <li>
-                    <img
-                      className={styles.image_container}
-                      src={element.image}
-                      alt=""
-                    />
-                  </li>
-                )}
-              </ul>
-            </div>
+           <Reco2 element={element} index={index}/>
           );
         })}
       </div>

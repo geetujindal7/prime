@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect } from 'react'
-import { useAuth } from '../src/Context/AuthUserContext';
-import Header from '../src/Components/Header/Header';
-import styles from '../styles/main.module.css'
-import { AppContext } from '../src/Context/ApiContext';
-import SlideBar from '../src/Components/Common/SlideBar';
-import Elements from '../src/Components/Recommanded';
+import { useAuth } from '../../src/Context/AuthUserContext';
+import Header from '../../src/Components/Header/Header';
+import styles from '../../styles/main.module.css'
+import { AppContext } from '../../src/Context/ApiContext';
+import SlideBar from '../../src/Components/Common/SlideBar';
+import Elements from '../../src/Components/Recommanded';
 
 
 
