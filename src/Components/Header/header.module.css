@@ -1,6 +1,8 @@
 .HeaderContainer{
-    padding: 16px 32px;
+    padding: 14px 32px;
     display: flex;
+    background-color: #1b2530;
+    height: 70px;
     justify-content: space-between;
 }
 

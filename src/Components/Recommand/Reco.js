@@ -14,12 +14,13 @@ function Reco({element, index}) {
       const handleMouseOut = () => {
         setisHover(false);
       };
+
   return (
-    <div key={index}>
+    <div key={index} onMouseOut={handleMouseOut}>
     <ul>
       {index % 2 == 0 && (
-        <li onMouseEnter={handleMouseOver} onMouseLeave={handleMouseOut}>
-       {isHover ? <MouseHover id= {element.id}/> :  <img
+        <li onMouseEnter={handleMouseOver} onMouseOut={handleMouseOut}>
+       {isHover ? <MouseHover id= {element.id}/> :  <img onMouseOut={handleMouseOut}
             className={styles.image_container}
             src={element.image}
             alt=""

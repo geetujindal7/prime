@@ -55,7 +55,8 @@ function MouseHover({ id }) {
           backgroundColor: "#0f171e",
           border: "1px solid #00a8e1",
           zIndex: "1",
-          position: "absolute",
+        //   position: "absolute",
+        boxShadow: "0 0 2px 2px grey"
         }}
       >
         {data?.linkEmbed !== null ? (

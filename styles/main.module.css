@@ -2,13 +2,3 @@
     height: 72px;
     margin-bottom: 10px;
 }
-
-.sidebar{
-    display : none;
-}
-img:hover ~ .sidebar {
-    display : block;
-}
- .sidebar:hover {
-    display : block;
-}

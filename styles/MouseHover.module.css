@@ -8,6 +8,7 @@
     display: flex;
     padding: 5px 10px;
     margin: 0px 20px;
+    justify-content: space-between;
 }
 
 .Play_progress{
