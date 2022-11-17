@@ -1,5 +1,6 @@
 import styles from './header.module.css'
 import Image from "next/image";
+import Link from 'next/link';
 
 
 const HeaderItems = () => {
@@ -15,11 +16,13 @@ const HeaderItems = () => {
         />
     </div>
     <ul className={styles.header_list}>
-    <li>Home</li>
+  <Link href="/">
+  <li>Home</li>
+  </Link>
     <li>Store</li>
     <li>Channels</li>
     <li>Categories</li>
-    <li>My Stuff</li>
+    <Link href="/wishlist"><li >My Stuff</li></Link>
     </ul>
     </div>
   )

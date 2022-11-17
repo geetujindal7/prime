@@ -53,3 +53,33 @@
     border: 1px solid;
     padding: 0px 2px;
 }
+
+.HoverContainer{
+    width: 350px;
+    height: 440px;
+    background-color: #0f171e;
+    border: 1px solid #00a8e1;
+    z-index: 3;
+     /* position: absolute */
+    box-shadow: 0 0 2px 2px grey;
+    transition: opacity .2s;
+}
+
+.HoverContainerUpd{
+    width: 400px;
+    height: 246px;
+    background-color: #0f171e;
+    border: 1px solid #00a8e1;
+    z-index: 1;
+     position: absolute;
+    box-shadow: 0 0 2px 2px grey;
+    
+}
+
+
+/* .HoverContainer:hover{
+    transform: scale(1.2);
+} */
+.vp-quality{
+    display: none;
+}

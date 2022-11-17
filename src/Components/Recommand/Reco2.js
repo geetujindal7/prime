@@ -21,7 +21,7 @@ function Reco2({ element, index }) {
       <ul>
         {index % 2 !== 0 && (
           <li>
-            {isHover ? (
+          {isHover ? (
               <MouseHover id={element.id} />
             ) : (
               <img
@@ -29,7 +29,7 @@ function Reco2({ element, index }) {
                 src={element.image}
                 alt=""
               />
-            )}
+            )} 
           </li>
         )}
       </ul>

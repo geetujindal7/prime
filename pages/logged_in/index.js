@@ -18,8 +18,7 @@ const LoggedIn = ({}) => {
   console.log("auth", authUser)
 
   useEffect(() => {
-     context.HandlePageNo("Top250Movies")
-  }, [context])
+  }, [])
     
   return (
       <>

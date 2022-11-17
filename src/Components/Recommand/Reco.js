@@ -16,15 +16,23 @@ function Reco({element, index}) {
       };
 
   return (
-    <div key={index} onMouseOut={handleMouseOut}>
+    <div
+    onMouseEnter={handleMouseOver}
+    onMouseLeave={handleMouseOut}
+    key={index}
+  >
     <ul>
       {index % 2 == 0 && (
-        <li onMouseEnter={handleMouseOver} onMouseOut={handleMouseOut}>
-       {isHover ? <MouseHover id= {element.id}/> :  <img onMouseOut={handleMouseOut}
-            className={styles.image_container}
-            src={element.image}
-            alt=""
-          />}
+        <li>
+        {isHover ? (
+            <MouseHover id={element.id} />
+          ) : (
+            <img
+              className={styles.image_container}
+              src={element.image}
+              alt=""
+            />
+          )} 
         </li>
       )}
     </ul>

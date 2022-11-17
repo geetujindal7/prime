@@ -1,11 +1,11 @@
 import Link from "next/link";
-import React, {  useEffect, useState } from "react";
+import React, {  useContext, useEffect, useState } from "react";
 import styles from "../../../styles/MouseHover.module.css";
 import Router, {  } from 'next/router'
+import { AppContext } from "../../Context/ApiContext";
 
 function MouseHoverSearched({datas, id}) {
-    console.log(datas)
-  
+  const context = useContext(AppContext)  
     const [data, setData] = useState(
         {
       imDbId: "tt4273800",
@@ -34,6 +34,9 @@ function MouseHoverSearched({datas, id}) {
       });
     }
   
+    const handlewish = (data) => {
+      context.HandleWishlist(data)
+    }
     // useEffect(() => {
     //   async function fetchData() {
     //     const res = await fetch(
@@ -82,6 +85,7 @@ function MouseHoverSearched({datas, id}) {
            
            
             <img
+            onClick={() => handlewish(data)}
               title="Add to Wishlist"
               className={styles.play_icon_style}
               src="https://www.freeiconspng.com/thumbs/plus-icon/grey-plus-icon-8.png"

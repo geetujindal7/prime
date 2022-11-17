@@ -23,7 +23,6 @@ function SignInHeader() {
         query: {
           "Search" : Search
       }
-        
     });
     }
     else{

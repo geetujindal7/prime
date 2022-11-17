@@ -1,0 +1,26 @@
+.head_container{
+    display: flex;
+    margin-top: 25px
+}
+
+.head_container h1{
+    color: #8197a4;
+    margin: 16px;
+    float: none;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.ImageContainer {
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.imgStyle{
+    width: 400px;
+    height: 246px;
+    margin: 30px;
+}
