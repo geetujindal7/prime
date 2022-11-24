@@ -30,7 +30,7 @@ function Reco({element, index}) {
             <img
               className={styles.image_container}
               src={element.image}
-              alt=""
+              alt="test"
             />
           )} 
         </li>

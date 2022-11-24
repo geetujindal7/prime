@@ -76,7 +76,7 @@ function MouseHover({ id }) {
             <img
               style={{ width: "350px", height: "200px" }}
               src={data?.thumbnailUrl}
-              alt=""
+              alt="test"
             />
           </div>
         )}
@@ -86,7 +86,7 @@ function MouseHover({ id }) {
           onClick={handleClick}
             className={styles.playImage}
             src="https://www.freepnglogos.com/uploads/play-button-png/index-media-cover-art-play-button-overlay-5.png"
-            alt=""
+            alt="test"
           />
           <div className={styles.Play_progress}>
             <label for="file" style={{ color: "white" }}>
@@ -102,14 +102,14 @@ function MouseHover({ id }) {
             title="Watch Trailer"
             className={styles.play_icon_style}
             src="https://www.svgrepo.com/show/209278/play-button.svg"
-            alt=""
+            alt="test"
           />
           <img
             onClick={() => handlewish(data)}
             title="Add to Wishlist"
             className={styles.play_icon_style}
             src="https://www.freeiconspng.com/thumbs/plus-icon/grey-plus-icon-8.png"
-            alt=""
+            alt="test"
           />
         </div>
         <div

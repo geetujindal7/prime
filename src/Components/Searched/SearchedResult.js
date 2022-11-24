@@ -37,10 +37,10 @@ function SearchedResult({ data, index }) {
               <img
                 className={styles.img_card}
                 src="https://www.designbolts.com/wp-content/uploads/2015/12/404-page-not-found-design.jpg"
-                alt=""
+                alt="test"
               />
             ) : (
-              <img className={styles.img_card} src={data.image} alt="" />
+              <img className={styles.img_card} src={data.image} alt="test" />
             )}
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div>
@@ -57,7 +57,7 @@ function SearchedResult({ data, index }) {
                   title="Add to Wishlist"
                   className={styles.play_icon_style}
                   src="https://www.freeiconspng.com/thumbs/plus-icon/grey-plus-icon-8.png"
-                  alt=""
+                  alt="test"
                 />
               </div>
             </div>

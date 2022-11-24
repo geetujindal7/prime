@@ -48,7 +48,7 @@ function SignInHeader() {
         className={searchIcon ? styles.icons : styles.icon}
         onClick={handleSearch}
         src="http://www.clker.com/cliparts/w/r/Q/0/x/D/search-icon-light-grey.svg"
-        alt=""
+        alt="test"
         width={40}
         height={30}
         type="submit"

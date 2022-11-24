@@ -127,7 +127,7 @@ const SlideBar = () => {
               style={{
                 backgroundImage: `url(${result?.results[currentIndex].image})`,
                 width: "60%",
-                height: "285px",
+                height: "28px",
                 borderRadius: "0px 0px 1000px 0px",
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",

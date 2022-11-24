@@ -23,11 +23,16 @@ const AppProvider = ({children}) => {
         console.log(data)
         }
 
+    const HandleRemoveWishlist = (id) => {
+        const remove = wishlist.filter((e) => e.imDbId != id)
+        setWishlist(remove)
+    }
+
         useEffect(() => {
             localStorage.setItem('wishlists', JSON.stringify(wishlist));
           }, [wishlist])
 
-    return <AppContext.Provider value={{HandleWishlist , wishlist}}>
+    return <AppContext.Provider value={{HandleWishlist , wishlist, HandleRemoveWishlist}}>
         {children}
     </AppContext.Provider>
 }

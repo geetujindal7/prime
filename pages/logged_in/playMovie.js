@@ -5,7 +5,7 @@ function playMovie(props) {
   const router = useRouter();
   const query = router.query;
   console.log(query.title);
-
+  console.log(query)
   const handleClose = () => {
     router.push("./");
   };
@@ -26,7 +26,7 @@ function playMovie(props) {
           }}
           onClick={handleClose}
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Grey_close_x.svg/1024px-Grey_close_x.svg.png"
-          alt=""
+          alt="test"
         />
       </div>
       <div

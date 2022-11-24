@@ -67,7 +67,7 @@ function MouseHoverSearched({datas, id}) {
               <img
                 style={{ width: "350px", height: "200px" }}
                 src={data?.thumbnailUrl}
-                alt=""
+                alt="test"
               />
             </div>
           
@@ -78,7 +78,7 @@ function MouseHoverSearched({datas, id}) {
             onClick={handleClick}
               className={styles.playImage}
               src="https://www.freepnglogos.com/uploads/play-button-png/index-media-cover-art-play-button-overlay-5.png"
-              alt=""
+              alt="test"
             />
             <p style={{margin: "10px", fontSize: "14px"}}>Play</p>
            </div>
@@ -89,7 +89,7 @@ function MouseHoverSearched({datas, id}) {
               title="Add to Wishlist"
               className={styles.play_icon_style}
               src="https://www.freeiconspng.com/thumbs/plus-icon/grey-plus-icon-8.png"
-              alt=""
+              alt="test"
             />
           </div>
           <div

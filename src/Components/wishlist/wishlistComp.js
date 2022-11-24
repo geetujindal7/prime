@@ -20,12 +20,10 @@ function WishlistComp({data, key}) {
       };
     
   return (
-      <div onMouseEnter={() => handleMouseOver()}
-      onMouseLeave={() => handleMouseOut()}
-      key={key} className={styles.ImageContainer}>
-        <img  className={styles.imgStyle} src={data.thumbnailUrl} alt="" />
+     
+        <img  className={styles.imgStyle} src={data.thumbnailUrl} alt="test" />
 
-        </div>
+       
   )
 }
 
