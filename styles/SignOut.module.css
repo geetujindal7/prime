@@ -11,3 +11,18 @@
   display: flex;
   justify-content: flex-start;
 }
+
+.listStyle {
+  list-style: none;
+  margin: 20px;
+  color: #c4cacf;
+  font-size: 15px;
+}
+
+.listStyleFlex {
+  list-style: none;
+  margin: 20px;
+  color: #c4cacf;
+  font-size: 15px;
+  display: flex;
+}

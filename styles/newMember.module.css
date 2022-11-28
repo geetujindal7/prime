@@ -1,0 +1,75 @@
+.cardContainer {
+  margin: 60px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.cardContainerItem {
+  margin: auto;
+  padding: 0px 24px;
+  color: #fff;
+  min-height: calc(100vh - 88px);
+}
+
+.cardContainerItem h1 {
+  padding: 24px 0 16px;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.cardContainerItem p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 200;
+  padding-bottom: 24px;
+}
+
+.learnText {
+  color: #79b8f3;
+  font-size: 18px;
+  font-weight: 100;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.createProfile {
+  padding: 14px 20px;
+  width: 352px;
+  background-color: #425265;
+  color: #fff;
+  border: 0px;
+  font-size: 16px;
+}
+
+.cancel {
+  padding: 14px 20px;
+  background-color: #425265;
+  color: #fff;
+  border: 0px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.listStyleFlex {
+  list-style: none;
+  margin: 20px;
+  color: #c4cacf;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputText{
+  background-color: rgba(0,0,0,.3);
+    border: 2px solid #425265;
+    box-shadow: none;
+    color: #fff;
+    font-size: 15px;
+    width: 350px;
+    padding: 13px;
+    border-radius: 3px;
+    text-align: center;
+}

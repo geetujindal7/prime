@@ -24,9 +24,9 @@ const Login = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [errorFound, setError] = useState();
-  const [login, setLogin] = useState(() => {
-    return getStorageValue('login', false);
-  });
+  // const [login, setLogin] = useState(() => {
+  //   return getStorageValue('login', false);
+  // });
 
   const { authUser, loading } = useAuth();
   const router = useRouter();
@@ -53,13 +53,15 @@ const Login = () => {
       e.preventDefault();
       signInWithEmailAndPassword(email, password)
     .then(userData => {
+
       !userData.user.emailVerified && userData.user.sendEmailVerification();   
       if(userData.user.emailVerified)
       {  
        if(authUser?.displayName ===  null){
         authUser.displayName = userData?.user?.displayName
        } 
-        setLogin(true)
+       
+        context.setLogin(true)
          router.push('/logged_in')
       }
       else{
@@ -75,15 +77,17 @@ const Login = () => {
   useEffect(() => {
     if (!loading && !authUser)
     {
-      setLogin(false)
+      context.setLogin(false)
       router.push('/')
     }
-    else if(login){
+    else if(context.login){
       router.push('/logged_in')
     }
-    sessionStorage.setItem('login', JSON.stringify(login));
-  }, [authUser, loading, login])
 
+    //sessionStorage.setItem('login', JSON.stringify(login));
+  }, [authUser, loading])
+
+  
 
   return (
     <form onSubmit={loginHandler} className={styles.Sign_In_container}>

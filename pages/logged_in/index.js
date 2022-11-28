@@ -20,7 +20,8 @@ const LoggedIn = ({}) => {
 
 
   useEffect(() => {
-  }, [])
+    context.HandleMember(authUser?.displayName)
+  },[authUser])
 
 
     
