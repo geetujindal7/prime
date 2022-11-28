@@ -17,12 +17,18 @@ const ApiURL = "https://www.omdbapi.com/?apikey=eae5fd6&s=game";
 const AppProvider = ({children}) => {
 
     const [wishlist , setWishlist] = useState(getStorageValue())
+    const [ShowProfileDetails, SetShowProfileDetails] = useState(false)
+    const [logout, setLogout] = useState(tr)
+    
 
     const HandleWishlist = (data) => {
         setWishlist([...wishlist, data])
         console.log(data)
         }
 
+    const HandleShowProfileDetails = () => {
+        SetShowProfileDetails(!ShowProfileDetails)
+    }
     const HandleRemoveWishlist = (id) => {
         const remove = wishlist.filter((e) => e.imDbId != id)
         setWishlist(remove)
@@ -32,7 +38,7 @@ const AppProvider = ({children}) => {
             localStorage.setItem('wishlists', JSON.stringify(wishlist));
           }, [wishlist])
 
-    return <AppContext.Provider value={{HandleWishlist , wishlist, HandleRemoveWishlist}}>
+    return <AppContext.Provider value={{HandleWishlist , wishlist, HandleRemoveWishlist, HandleShowProfileDetails, ShowProfileDetails}}>
         {children}
     </AppContext.Provider>
 }
