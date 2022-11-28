@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Purchase() {
+function Purchase({image, text1, text2}) {
   return (
     <>
     <div style={{
@@ -9,7 +9,7 @@ function Purchase() {
       alignItems:"center", 
       justifyContent: "center"
     }}>
-      <img style={{width:"217px", height: "217px"}} src="https://m.media-amazon.com/images/G/01/digital/video/empty_list_watchlist_purchases_new.png" alt="test" />
+      <img style={{width:"217px", height: "217px"}} src={image} alt="test" />
     </div>
     <h3 style={{
       margin: "auto",
@@ -19,7 +19,7 @@ function Purchase() {
     color: "#fff"
 }}
     >
-    There are no movies in your Purchases & Rentals
+    {text1}
     </h3>
     <h3 style={{
       margin: "auto",
@@ -28,7 +28,7 @@ function Purchase() {
     fontSize: "17px",
     color: "#8197a4"
 }}>
-    If videos are missing, make sure that you're signed into the correct Amazon account and then refresh this page.
+   {text2}
     </h3>
     </>
   )

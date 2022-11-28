@@ -1,15 +1,18 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./header.module.css";
 import { useAuth } from "../../Context/AuthUserContext";
 import { useRouter } from "next/router";
 import Router, { withRouter } from 'next/router'
+import SignOut from "../Common/SignOut";
+import { AppContext } from "../../Context/ApiContext";
 
 
 function SignInHeader() {
   const { authUser } = useAuth();
   const [searchIcon, setSearchIcon] = useState(false);
   const [Search, setSearch] = useState()
+  const context = useContext(AppContext);
   const router = useRouter();
 
   
@@ -63,8 +66,9 @@ function SignInHeader() {
           src="https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-1.png"
           width={32}
           height={32}
+          alt="test"
         />
-        <h3 className={styles.name}>{authUser?.displayName}</h3>
+        <h3 className={styles.name} onClick={() => context.HandleShowProfileDetails()}>{authUser?.displayName}</h3>
       </div>
     </div>
     </form>

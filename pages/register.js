@@ -42,6 +42,7 @@ const Register = () => {
     } 
   }
 
+
   return (
     <>
     <form onSubmit={registerHandler} className={styles.Sign_In_container}>

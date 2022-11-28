@@ -2,10 +2,11 @@ import Image from "next/image";
 import styles from "../../styles/login.module.css";
 import Footer from "./Common/Footer";
 import Popups from "./Common/Popup";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAuth } from "../Context/AuthUserContext";
 import { useRouter } from "next/router";
 import Link from 'next/link';
+import { AppContext } from "../Context/ApiContext";
 
 
 function getStorageValue(key, defaultValue) {
@@ -30,12 +31,13 @@ const Login = () => {
   const { authUser, loading } = useAuth();
   const router = useRouter();
   const { signInWithEmailAndPassword, sendPasswordResetEmail } = useAuth();
+  const context = useContext(AppContext)
 
   const handleReset = (e) => {
     e.preventDefault()
    if(email)
    {
-    sendPasswordResetEmail(email).then(() => {
+     sendPasswordResetEmail(email).then(() => {
       alert("Please check your mail to reset your password")
       setError("")
     }).catch((error) => {
@@ -51,9 +53,12 @@ const Login = () => {
       e.preventDefault();
       signInWithEmailAndPassword(email, password)
     .then(userData => {
-      userData.user.sendEmailVerification();      
+      !userData.user.emailVerified && userData.user.sendEmailVerification();   
       if(userData.user.emailVerified)
-      {   
+      {  
+       if(authUser?.displayName ===  null){
+        authUser.displayName = userData?.user?.displayName
+       } 
         setLogin(true)
          router.push('/logged_in')
       }
@@ -87,6 +92,7 @@ const Login = () => {
           width="150"
           height="47"
           src="https://m.media-amazon.com/images/G/01/digital/video/avod/AV_Logo_150._CB430404026_.png"
+          alt="test"
         />
       </div>
       {errorFound && (
@@ -108,12 +114,12 @@ const Login = () => {
         >
           Sign in
         </h1>
-        <label for="Email" className={styles.label_signin}>
+        <label htmlFor="Email" className={styles.label_signin}>
           Email or mobile phone number
         </label>
         <input id="Email" type="email" onChange={(e) => setEmail(e.target.value)} value={email} className={styles.input_signIn}></input>
        <div style={{display: "flex", justifyContent: "space-between"}}>
-       <label for="password" className={styles.label_signin}>
+       <label htmlFor="password" className={styles.label_signin}>
           Password
         </label>
         <p onClick={handleReset} className={styles.ResetPassword}>Forgot your Password?</p>
