@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import  Router  from 'next/router';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../src/Context/ApiContext';
 import styles from "../../styles/newMember.module.css";
 
@@ -9,8 +9,9 @@ import styles from "../../styles/newMember.module.css";
 function manage() {
     const context = useContext(AppContext)
     const a = [...new Set(context.members)]
-    const nul = a.filter((n) => n!=  null || '' || undefined)
     const [edit, setedit] = useState(false)
+    const [Nulvalue, setNulvalue] = useState()
+
 
     const handleEditId = (e, key) => {
       context.handleEdit(e)
@@ -27,6 +28,11 @@ function manage() {
       context.HandleShowProfileDetails();
     }
 
+    useEffect(() => {
+      const nul = a.filter((n) => n!=  null || '' || undefined)
+      setNulvalue(nul)
+    }, [])
+
   return (<>
     <div style={{margin: "30px"}}>
       <Link href="/logged_in"> <div className={styles.Image_logo}>
@@ -42,10 +48,10 @@ function manage() {
     <div className={styles.cardContainerItem}>
       <h1>Who's watching?</h1>
       <div className={styles.cardContainerItem} style={{display:"flex"}}>
-      {edit ? nul?.slice(0,4).map((e, key) => {
+      {edit ? Nulvalue?.slice(0,4).map((e, key) => {
             return (
               <>
-                <li className={styles.listStyleFlex} onClick={() => handleEditId(e, key)}>
+                <li className={styles.listStyleFlex} key={key} onClick={() => handleEditId(e, key)}>
                   <Image
                     src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${
                       key + 1
@@ -67,10 +73,10 @@ function manage() {
                 </li>
               </>
             );
-          }) : nul?.slice(0,4).map((e, key) => {
+          }) : Nulvalue?.slice(0,4).map((e, key) => {
             return (
               <>
-                <li className={styles.listStyleFlex} onClick={() => handleProfile(e, key+1)}>
+                <li className={styles.listStyleFlex} key={key} onClick={() => handleProfile(e, key+1)}>
                   <Image
                     src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${
                       key + 1
@@ -92,6 +98,7 @@ function manage() {
               height={150}
               style={{ marginRight: "10px" }}
               alt="test"
+              priority="true"
             />
             <h3 style={{textAlign: "center", marginTop: "5px", fontSize: "15px" }}>Kids</h3>
           </li>
