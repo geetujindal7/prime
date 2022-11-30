@@ -7,11 +7,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Register = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [name, setName] = useState();
-  const [ReEnterpassword, setReEnterPassword] = useState();
-  const [errorFound, setError] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [ReEnterpassword, setReEnterPassword] = useState("");
+  const [errorFound, setError] = useState("");
 
   const { authUser, loading } = useAuth();
   const router = useRouter();

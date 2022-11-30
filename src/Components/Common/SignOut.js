@@ -10,8 +10,8 @@ function SignOut() {
   const { authUser, signOut } = useAuth();
   const router = useRouter();
   const context = useContext(AppContext);
-  const a = [...new Set(context.members)]
-  const nul = a.filter((n) => n!=  null || '' || undefined)
+  const a = [...new Set(context.members)];
+  const nul = a.filter((n) => n != null || "" || undefined);
 
   const handleSignOut = () => {
     signOut();
@@ -21,17 +21,20 @@ function SignOut() {
   };
 
   const handleProfile = (e, key) => {
-    context.handleProfile(e,key)
+    context.handleProfile(e, key);
     context.HandleShowProfileDetails();
-    
-  }
+  };
+  const current = new Date();
   return (
     <ul className={styles.SignOutContainer}>
       <div style={{ width: "200px" }}>
         <span>
           <li className={styles.listStyle}>Account and Settings</li>
           <li className={styles.listStyle}>Watch Anywhere</li>
-         <Link href="https://www.primevideo.com/help/ref=atv_nb_hp"> <li className={styles.listStyle}>Help</li></Link>
+          <Link href="https://www.primevideo.com/help/ref=atv_nb_hp">
+            {" "}
+            <li className={styles.listStyle}>Help</li>
+          </Link>
           <li className={styles.listStyle} onClick={handleSignOut}>
             Not {authUser?.displayName}? Sign Out
           </li>
@@ -43,18 +46,29 @@ function SignOut() {
           {nul.slice(0, 4).map((e, key) => {
             return (
               <>
-                <li className={styles.listStyleFlex} onClick={() => handleProfile(e, key+1)}>
-                  <Image
-                    src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${
-                      key + 1
-                    }.png`}
-                    width={32}
-                    height={32}
-                    style={{ marginRight: "10px" }}
-                    alt="test"
-                  />
-                  <h3 style={{ marginTop: "5px", fontSize: "15px" }}>{e}</h3>
-                </li>
+                <div key={current}>
+                  <li
+                    className={styles.listStyleFlex}
+                    key={key}
+                    onClick={() => handleProfile(e, key + 1)}
+                  >
+                    <Image
+                      src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${
+                        key + 1
+                      }.png`}
+                      width={32}
+                      height={32}
+                      style={{ marginRight: "10px" }}
+                      alt="test"
+                      key={current}
+                    />
+                    <h3
+                      style={{ marginTop: "5px", fontSize: "15px" }}
+                    >
+                      {e}
+                    </h3>
+                  </li>
+                </div>
               </>
             );
           })}
@@ -83,9 +97,13 @@ function SignOut() {
               }}
               alt="test"
             />
-            <Link href="logged_in/associate"><h3 style={{ marginTop: "5px", fontSize: "15px" }}>Add New</h3></Link>
+            <Link href="logged_in/associate">
+              <h3 style={{ marginTop: "5px", fontSize: "15px" }}>Add New</h3>
+            </Link>
           </li>
-          <Link href="logged_in/manage"><li className={styles.listStyle}>Manage Profiles</li></Link>
+          <Link href="logged_in/manage">
+            <li className={styles.listStyle}>Manage Profiles</li>
+          </Link>
           <li className={styles.listStyle}>Learn More</li>
         </span>
       </div>

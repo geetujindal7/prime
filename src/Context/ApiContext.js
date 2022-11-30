@@ -67,7 +67,6 @@ const AppProvider = ({ children }) => {
 
   const HandleMember = (data) => {
     setMember([...members, data]);
-    console.log(members)
   };
 
   const handleRemove = (item, key) => {
@@ -82,7 +81,6 @@ const AppProvider = ({ children }) => {
       name: name, 
       id: id
   }))
-    console.log(userProfile)
   }
 
   const HandleShowProfileDetails = () => {

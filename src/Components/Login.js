@@ -21,9 +21,9 @@ function getStorageValue(key, defaultValue) {
 const Login = () => {
 
 
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const [errorFound, setError] = useState();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [errorFound, setError] = useState("");
   // const [login, setLogin] = useState(() => {
   //   return getStorageValue('login', false);
   // });

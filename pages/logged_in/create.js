@@ -8,7 +8,7 @@ import styles from "../../styles/newMember.module.css";
 function create() {
   const context = useContext(AppContext);
   const [key, setKey] = useState(2);
-  const [name, setName] = useState();
+  const [name, setName] = useState("");
   // const [defaults, setdefaults] = useState(false)
 
   useEffect(() => {

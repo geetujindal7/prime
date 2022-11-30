@@ -49,10 +49,10 @@ function playMovie(props) {
           width="854"
           allow='autoplay'
           height="480"
-          allowfullscreen="true"
+          allowFullScreen={true}
           mozallowfullscreen="true"
           webkitallowfullscreen="true"
-          frameborder="no"
+          frameBorder="no"
           scrolling="no"
           marginwidth="50"
         ></iframe>

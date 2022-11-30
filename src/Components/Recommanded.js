@@ -1333,14 +1333,14 @@ function Elements() {
       <div className={styles.container}>
         {data?.items?.map((element, index) => {
           return (
-           <Reco element={element} index={index}/>
+           <Reco element={element} key = {index} index={index}/>
           );
         })}
       </div>
       <div className={styles.container}>
         {data?.items?.map((element, index) => {
           return (
-           <Reco2 element={element} index={index}/>
+           <Reco2 element={element} key = {index} index={index}/>
           );
         })}
       </div>

@@ -66,10 +66,10 @@ function wishlist() {
                       //allow='autoplay'
                       width="400"
                       height="246"
-                      allowfullscreen="true"
+                      allowFullScreen={true}
                       mozallowfullscreen="true"
                       webkitallowfullscreen="true"
-                      frameborder="no"
+                      frameBorder="no"
                       scrolling="no"
                     ></iframe>
                   ) : (

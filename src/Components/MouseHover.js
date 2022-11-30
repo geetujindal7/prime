@@ -65,10 +65,10 @@ function MouseHover({ id }) {
             //allow='autoplay'
             width="340"
             height="200"
-            allowfullscreen="true"
+            allowFullScreen={true}
             mozallowfullscreen="true"
             webkitallowfullscreen="true"
-            frameborder="no"
+            frameBorder="no"
             scrolling="no"
           ></iframe>
         ) : (
@@ -89,7 +89,7 @@ function MouseHover({ id }) {
             alt="test"
           />
           <div className={styles.Play_progress}>
-            <label for="file" style={{ color: "white" }}>
+            <label htmlFor="file" style={{ color: "white" }}>
               Play
             </label>
             <progress
