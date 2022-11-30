@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { AppContext } from '../../Context/ApiContext';
 import styles from './header.module.css'
 import HeaderItems from './HeaderItems';
 import SignInHeader from './SignInHeader';

@@ -1,24 +1,76 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useContext } from 'react'
+import  Router  from 'next/router';
+import React, { useContext, useState } from 'react'
 import { AppContext } from '../../src/Context/ApiContext';
 import styles from "../../styles/newMember.module.css";
 
 
 function manage() {
     const context = useContext(AppContext)
-    console.log(context.members)
-    const arr = ["Geetu", "ABC", "Jindal", "Match", "Check"];
+    const a = [...new Set(context.members)]
+    const nul = a.filter((n) => n!=  null || '' || undefined)
+    const [edit, setedit] = useState(false)
 
-  return (
+    const handleEditId = (e, key) => {
+      context.handleEdit(e)
+      Router.push({
+        pathname: "../logged_in/edit",
+      });
+    }
+
+    const handleProfile = (e, key) => {
+      context.handleProfile(e,key)
+      Router.push({
+        pathname: "../logged_in/",
+      });
+      context.HandleShowProfileDetails();
+    }
+
+  return (<>
+    <div style={{margin: "30px"}}>
+      <Link href="/logged_in"> <div className={styles.Image_logo}>
+         <Image 
+          width="120"
+          height="40"
+          src="https://amazonuk.gcs-web.com/system/files-encrypted/nasdaq_kms/inline-images/Prime_Video_Logo.png"
+          alt="test"
+        />
+    </div></Link>
+    </div>
     <div className={styles.cardContainer}>
     <div className={styles.cardContainerItem}>
       <h1>Who's watching?</h1>
       <div className={styles.cardContainerItem} style={{display:"flex"}}>
-      {context.members?.map((e, key) => {
+      {edit ? nul?.slice(0,4).map((e, key) => {
             return (
               <>
-                <li className={styles.listStyleFlex}>
+                <li className={styles.listStyleFlex} onClick={() => handleEditId(e, key)}>
+                  <Image
+                    src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${
+                      key + 1
+                    }.png`}
+                    width={150}
+                    height={150}
+                    style={{ marginRight: "10px", position: "relative", opacity :"0.2"}}
+                    alt="test"
+                  />
+                  <Image
+                  src={`data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyNyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2U9IiNGMkY0RjYiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNMjEuMDgyIDEuODc1IDEuODc1IDE5Ljk1OHY1LjE2N2g1LjE2N0wyNi40MTcgNy4xNTl6Ii8+PHBhdGggZD0ibTE3LjM3NSA3LjA0MiAzLjg3NSAzLjg3NSIvPjwvZz48L3N2Zz4=`}
+                    width={30}
+                    height={30}
+                    style={{ marginRight: "10px", position: "absolute",marginLeft: "60px", marginTop:"60px" }}
+                    alt="test" 
+                    />
+                  
+                  <h3 style={{ marginTop: "10px",textAlign: "center", fontSize: "15px" }}>{e}</h3>
+                </li>
+              </>
+            );
+          }) : nul?.slice(0,4).map((e, key) => {
+            return (
+              <>
+                <li className={styles.listStyleFlex} onClick={() => handleProfile(e, key+1)}>
                   <Image
                     src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${
                       key + 1
@@ -33,6 +85,16 @@ function manage() {
               </>
             );
           })}
+          <li className={styles.listStyleFlex}>
+            <Image
+              src="https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/kid-1.png"
+              width={150}
+              height={150}
+              style={{ marginRight: "10px" }}
+              alt="test"
+            />
+            <h3 style={{textAlign: "center", marginTop: "5px", fontSize: "15px" }}>Kids</h3>
+          </li>
           <li className={styles.listStyleFlex}>
           <Link href="../logged_in/associate">
             <Image
@@ -52,9 +114,15 @@ function manage() {
             />
            <h3 style={{textAlign: "center", marginTop: "10px", fontSize: "15px" }}>Add New</h3></Link>
           </li>
+          
       </div>
+      <div style={{display: "flex", justifyContent: "center", marginTop: "30px"}}>
+            <button className={styles.cancel} onClick={() => setedit(!edit)}>{edit ? "Done" : "Edit profile"}</button>
+
+          </div>
    </div>
    </div>
+   </>
   )
 }
 

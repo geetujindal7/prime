@@ -3,6 +3,8 @@ import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../src/Context/ApiContext";
 import { useAuth } from "../../src/Context/AuthUserContext";
 import styles from "../../styles/newMember.module.css";
+import Image from "next/image";
+
 
 function NewMember() {
   const { authUser } = useAuth();
@@ -11,6 +13,17 @@ function NewMember() {
  
 
   return (
+    <>
+    <div style={{margin: "30px"}}>
+      <Link href="/logged_in"> <div className={styles.Image_logo}>
+         <Image
+          width="120"
+          height="40"
+          src="https://amazonuk.gcs-web.com/system/files-encrypted/nasdaq_kms/inline-images/Prime_Video_Logo.png"
+          alt="test"
+        />
+    </div></Link>
+    </div>
     <div className={styles.cardContainer}>
       <div className={styles.cardContainerItem}>
         <h1>New profile</h1>
@@ -40,6 +53,7 @@ function NewMember() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

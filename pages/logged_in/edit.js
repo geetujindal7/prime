@@ -5,26 +5,32 @@ import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../src/Context/ApiContext";
 import styles from "../../styles/newMember.module.css";
 
-function create() {
+function Edit() {
   const context = useContext(AppContext);
-  const [key, setKey] = useState(2);
-  const [name, setName] = useState();
+//   const [key, setKey] = useState(2);
+  const [name, setName] = useState(context.edited);
   // const [defaults, setdefaults] = useState(false)
-
-  useEffect(() => {
-    setKey(context.members?.length + 1);
-  }, [key]);
-
+  
   const handleValue = (e) => {
     setName(e.target.value)
   }
 
+  const key = context.members?.indexOf(context.edited)
+
   const handleSubmit = () => {
-    context.HandleMember(name)
+    context.handleEditArray(name, key)
     setName("")
     Router.push({
-      pathname: "../logged_in/manage", 
+      pathname: "../logged_in/manage",
     });
+  }
+
+  const handleRemoveItem = (e, key) => {
+      context.handleRemove(name, key)
+      setName("")
+      Router.push({
+        pathname: "../logged_in/manage",
+      });
   }
   return (
     <>
@@ -36,14 +42,14 @@ function create() {
           src="https://amazonuk.gcs-web.com/system/files-encrypted/nasdaq_kms/inline-images/Prime_Video_Logo.png"
           alt="test"
         />
-    </div></Link>
+        </div></Link>
     </div>
     <div className={styles.cardContainer}>
       <div className={styles.cardContainerItem} style={{ textAlign: "center" }}>
-        <h1>New profile</h1>
+        <h1>Edit profile</h1>
         <div>
           <Image
-            src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${key}.png`}
+            src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${key? key + 1 : 1}.png`}
             width={150}
             height={150}
             style={{ marginRight: "10px", marginBottom: "30px" }}
@@ -75,10 +81,13 @@ function create() {
             Save Changes
           </button>
         </div>
+        <div onClick={() => handleRemoveItem(context.edited, key)} className={styles.learnText}>
+            Remove Profile
+          </div>
       </div>
     </div>
     </>
   );
 }
 
-export default create;
+export default Edit;

@@ -8,17 +8,17 @@ const HeaderItems = () => {
       <div style={{
           display: "flex"
       }}>
-    <div className={styles.Image_logo}>
+   <Link href="/logged_in"> <div className={styles.Image_logo}>
          <Image 
           width="120"
           height="40"
           src="https://amazonuk.gcs-web.com/system/files-encrypted/nasdaq_kms/inline-images/Prime_Video_Logo.png"
           alt="test"
         />
-    </div>
+    </div></Link>
     <ul className={styles.header_list}>
   <Link href="/">
-  <li>Home</li>
+  <Link href="/logged_in"><li>Home</li></Link>
   </Link>
     <li>Store</li>
     <li>Channels</li>

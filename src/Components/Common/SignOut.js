@@ -10,7 +10,8 @@ function SignOut() {
   const { authUser, signOut } = useAuth();
   const router = useRouter();
   const context = useContext(AppContext);
-  const arr = ["Geetu", "ABC", "Jindal", "Match", "Check"];
+  const a = [...new Set(context.members)]
+  const nul = a.filter((n) => n!=  null || '' || undefined)
 
   const handleSignOut = () => {
     signOut();
@@ -19,13 +20,18 @@ function SignOut() {
     context.HandleShowProfileDetails();
   };
 
+  const handleProfile = (e, key) => {
+    context.handleProfile(e,key)
+    context.HandleShowProfileDetails();
+    
+  }
   return (
     <ul className={styles.SignOutContainer}>
       <div style={{ width: "200px" }}>
         <span>
           <li className={styles.listStyle}>Account and Settings</li>
           <li className={styles.listStyle}>Watch Anywhere</li>
-          <li className={styles.listStyle}>Help</li>
+         <Link href="https://www.primevideo.com/help/ref=atv_nb_hp"> <li className={styles.listStyle}>Help</li></Link>
           <li className={styles.listStyle} onClick={handleSignOut}>
             Not {authUser?.displayName}? Sign Out
           </li>
@@ -34,10 +40,10 @@ function SignOut() {
       <hr style={{ color: "#414c53", backgroundColor: "#414c53" }}></hr>
       <div style={{ width: "200px" }}>
         <span>
-          {arr.slice(0, 4).map((e, key) => {
+          {nul.slice(0, 4).map((e, key) => {
             return (
               <>
-                <li className={styles.listStyleFlex}>
+                <li className={styles.listStyleFlex} onClick={() => handleProfile(e, key+1)}>
                   <Image
                     src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${
                       key + 1
@@ -79,7 +85,7 @@ function SignOut() {
             />
             <Link href="logged_in/associate"><h3 style={{ marginTop: "5px", fontSize: "15px" }}>Add New</h3></Link>
           </li>
-          <li className={styles.listStyle}>Manage Profiles</li>
+          <Link href="logged_in/manage"><li className={styles.listStyle}>Manage Profiles</li></Link>
           <li className={styles.listStyle}>Learn More</li>
         </span>
       </div>

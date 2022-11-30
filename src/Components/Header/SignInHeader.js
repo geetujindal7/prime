@@ -13,7 +13,6 @@ function SignInHeader() {
   const [searchIcon, setSearchIcon] = useState(false);
   const [Search, setSearch] = useState()
   const context = useContext(AppContext);
-  const router = useRouter();
 
   
   const handleSearch = (e) => {
@@ -56,6 +55,20 @@ function SignInHeader() {
         height={30}
         type="submit"
       />
+      {context.userProfile.name !== '' ? <div
+        style={{
+          display: "flex",
+          marginLeft: "10px",
+        }}
+      >
+        <Image
+          src={`https://m.media-amazon.com/images/G/02/CerberusPrimeVideo-FN38FSBD/adult-${context.userProfile.id}.png`}
+          width={32}
+          height={32}
+          alt="test"
+        />
+        <h3 className={styles.name} onClick={() => context.HandleShowProfileDetails()}>{context.userProfile.name}</h3>
+      </div> :
       <div
         style={{
           display: "flex",
@@ -69,7 +82,7 @@ function SignInHeader() {
           alt="test"
         />
         <h3 className={styles.name} onClick={() => context.HandleShowProfileDetails()}>{authUser?.displayName}</h3>
-      </div>
+      </div>}
     </div>
     </form>
     </>
