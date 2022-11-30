@@ -33,7 +33,7 @@ function SearchedResult({ data, index }) {
           <MouseHoverSearched datas={data} id={data.id} />
         ) : (
           <>
-            {data.image.includes("nopicture") ? (
+            {data.image.includes("nopicture") || data.image === ""? (
               <img
                 className={styles.img_card}
                 src="https://www.designbolts.com/wp-content/uploads/2015/12/404-page-not-found-design.jpg"
