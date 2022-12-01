@@ -43,6 +43,8 @@ const AppProvider = ({ children }) => {
     name: '',
     id: 1
   })
+  const [ShowCategoriesDropdown, SetShowCategoriesDropdown] = useState(false);
+  const [categoriesFilterdData, setcategoriesFilterdData] = useState([])
 
   useEffect(() => {
     const a = [...members]
@@ -65,6 +67,10 @@ const AppProvider = ({ children }) => {
     setMember(newArr)
   };
 
+  const handlecategoriesFilterdData = (data) => {
+    setcategoriesFilterdData(data)
+  }
+
   const HandleMember = (data) => {
     setMember([...members, data]);
   };
@@ -86,6 +92,11 @@ const AppProvider = ({ children }) => {
   const HandleShowProfileDetails = () => {
     SetShowProfileDetails(!ShowProfileDetails);
   };
+
+  const HandleShowCategoriesDropdown = () => {
+    SetShowCategoriesDropdown(!ShowCategoriesDropdown);
+  };
+
   const HandleRemoveWishlist = (id) => {
     const remove = wishlist.filter((e) => e.imDbId != id);
     setWishlist(remove);
@@ -115,7 +126,12 @@ const AppProvider = ({ children }) => {
         handleEditArray,
         handleRemove,
         handleProfile,
-        userProfile
+        userProfile, 
+        HandleShowCategoriesDropdown,
+        ShowCategoriesDropdown,
+        SetShowCategoriesDropdown,
+        handlecategoriesFilterdData,
+        categoriesFilterdData
       }}
     >
       {children}

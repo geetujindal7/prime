@@ -1,0 +1,42 @@
+.CategoriesContainer {
+    color: white;
+    position: absolute;
+    top: 72px;
+    /* width: 400px; */
+    background: #252e39;
+    border-top-left-radius: 0;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px #000;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .dd{
+    width: 150px; 
+    height: 100px; 
+    background-image: url(https://m.media-amazon.com/images/G/01/digital/video/web_cats/Included-With-Prime.png);
+    margin: 10px;
+    border-radius: 10px;
+  }
+
+  .otherCate{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+
+  .otherCate li {
+      list-style: none;
+      margin: 5px;
+      color: #8197a4;
+      font-size: 15px;
+  }
+
+  .otherCate li:hover {
+    
+    color: white;
+    cursor: pointer;
+   
+}

@@ -5,6 +5,7 @@ import Router, {  } from 'next/router'
 import { AppContext } from "../../Context/ApiContext";
 
 function MouseHoverSearched({datas, id}) {
+  console.log(datas)
   const context = useContext(AppContext)  
     const [data, setData] = useState(
         {
@@ -66,7 +67,7 @@ function MouseHoverSearched({datas, id}) {
             <div>
               <img
                 style={{ width: "350px", height: "200px" }}
-                src={data?.thumbnailUrl}
+                src={data?.thumbnailUrl ? data?.thumbnailUrl : "https://www.designbolts.com/wp-content/uploads/2015/12/404-page-not-found-design.jpg"}
                 alt="test"
               />
             </div>

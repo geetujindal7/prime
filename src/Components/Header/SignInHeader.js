@@ -32,6 +32,11 @@ function SignInHeader() {
     }
     
   }
+
+  const handleProfileOpen = () => {
+    context.HandleShowProfileDetails();
+    context.SetShowCategoriesDropdown(false)
+  }
   
 
   return (
@@ -81,7 +86,7 @@ function SignInHeader() {
           height={32}
           alt="test"
         />
-        <h3 className={styles.name} onClick={() => context.HandleShowProfileDetails()}>{authUser?.displayName}</h3>
+        <h3 className={styles.name} onClick={handleProfileOpen}>{authUser?.displayName}</h3>
       </div>}
     </div>
     </form>

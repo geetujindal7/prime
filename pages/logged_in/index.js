@@ -7,9 +7,10 @@ import { AppContext } from "../../src/Context/ApiContext";
 import SlideBar from "../../src/Components/Common/SlideBar";
 import Elements from "../../src/Components/Recommanded";
 import SignOut from "../../src/Components/Common/SignOut";
+import Categories from "../../src/Components/Common/categories";
 
 const LoggedIn = ({}) => {
-  const {ShowProfileDetails, HandleMember} = useContext(AppContext);
+  const {ShowProfileDetails, HandleMember, ShowCategoriesDropdown} = useContext(AppContext);
 
   const { authUser } = useAuth();
 
@@ -30,6 +31,7 @@ const LoggedIn = ({}) => {
         <Elements />
       </div>
       {ShowProfileDetails ? <SignOut /> : undefined}
+      {ShowCategoriesDropdown ? <Categories /> : undefined}
     </>
   );
 };
