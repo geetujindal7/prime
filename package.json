@@ -23,6 +23,7 @@
     "react-simple-image-slider": "^2.4.1",
     "react-slideshow-image": "^4.0.5",
     "reactjs-popup": "^2.0.5",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "sharp": "^0.31.2"
   }
 }

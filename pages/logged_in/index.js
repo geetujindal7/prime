@@ -8,6 +8,7 @@ import SlideBar from "../../src/Components/Common/SlideBar";
 import Elements from "../../src/Components/Recommanded";
 import SignOut from "../../src/Components/Common/SignOut";
 import Categories from "../../src/Components/Common/categories";
+import Page from "../../src/Components/CategoryLoggedItem";
 
 const LoggedIn = ({}) => {
   const {ShowProfileDetails, HandleMember, ShowCategoriesDropdown} = useContext(AppContext);
@@ -29,6 +30,7 @@ const LoggedIn = ({}) => {
         </div>
         <SlideBar />
         <Elements />
+        <Page />
       </div>
       {ShowProfileDetails ? <SignOut /> : undefined}
       {ShowCategoriesDropdown ? <Categories /> : undefined}
