@@ -5,7 +5,7 @@ function playMovie(props) {
   const router = useRouter();
   const query = router.query;
   console.log(query.title);
-  console.log(query)
+  console.log(query);
   const handleClose = () => {
     router.push("./");
   };
@@ -36,30 +36,46 @@ function playMovie(props) {
           margin: "auto",
         }}
       >
-        <iframe
-          style={{
-            marginLeft: "auto",
-            marginRight: "auto",
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "100px",
-            alignItems: "center",
-          }}
-          src={query.linkEmbed}
-          width="854"
-          allow='autoplay'
-          height="480"
-          allowFullScreen={true}
-          mozallowfullscreen="true"
-          webkitallowfullscreen="true"
-          frameBorder="no"
-          scrolling="no"
-          marginwidth="50"
-        ></iframe>
+        {query.linkEmbed ? (
+          <iframe
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "100px",
+              alignItems: "center",
+            }}
+            src={query.linkEmbed}
+            width="854"
+            allow="autoplay"
+            height="480"
+            allowFullScreen={true}
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            frameBorder="no"
+            scrolling="no"
+            marginwidth="50"
+          ></iframe>
+        ) : (
+          <iframe
+            style={{
+              marginLeft: "auto",
+              marginRight: "auto",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            width="1400"
+            height="700"
+            src={`https://www.youtube.com/embed/${query?.videoId}?modestbranding=1&autohide=1&showinfo=0&controls=0&autoplay=1&mute=1&start=33&end=40&loop=1&playlist=${query?.videoId}`}
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        )}
       </div>
     </>
   );
 }
 
 export default playMovie;
-

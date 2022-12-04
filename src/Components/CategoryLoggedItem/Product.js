@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import items from "../Common/constant";
 import styles from "../../../styles/product.module.css"
 import Image from "next/image";
+import  Router from "next/router";
 
 function Product({ title }) {
     const [data, setData] = useState(items)
@@ -14,7 +15,11 @@ function Product({ title }) {
     }, [])
 
     const handleItem = (e) => {
-        
+      console.log(e)
+        Router.push({
+            pathname: "/logged_in/detailPage",
+            query: e
+          });
     }
 
   return <div style={{ marginTop: "30px" }}>
@@ -27,7 +32,7 @@ function Product({ title }) {
         data?.map((e) => {
             return (
                 <div>
-                <Image onClick={() => handleItem(e.id)} priority={true} width={350} height={200} className={styles.img_product} src={e.image} alt="" />
+                <Image onClick={() => handleItem(e)} priority={true} width={350} height={200} className={styles.img_product} src={e.image} alt="" />
 
                 </div>
             )
