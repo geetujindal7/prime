@@ -33,6 +33,12 @@
     cursor: pointer;
 }
 
+.header_list li:hover{
+    color: white;
+    text-decoration: underline;
+    font-weight: 800;
+}
+
  .searchIcon{
     border: 1px solid #8197a4;
     width: 250px;
@@ -47,7 +53,8 @@
 {
     position: relative;
     right: 250px;
-    top:3px
+    top:3px;
+    margin-top: 2px;
 }
 
 .name{
@@ -60,4 +67,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 5px 
+}
+
+.active{
+    font-weight: 800;
+    color: white;
+    text-decoration: underline;
 }

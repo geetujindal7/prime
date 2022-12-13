@@ -11,7 +11,6 @@ function wishlist() {
   const [colorWishlist, setColorW] = useState("#fff");
   const [colorpurchase, setColorP] = useState("#8197a4");
 
-  console.log(context.wishlist?.length);
 
   const handleItem = (a) => {
     settitle(a);

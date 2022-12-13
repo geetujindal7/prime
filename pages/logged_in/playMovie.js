@@ -1,14 +1,31 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 function playMovie(props) {
   const router = useRouter();
   const query = router.query;
-  console.log(query.title);
+  console.log(query.id);
   console.log(query);
   const handleClose = () => {
     router.push("./");
   };
+
+  const [result, setResult] = useState();
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch(
+        `https://imdb-api.com/en/API/Trailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${query.id}`
+      );
+      const data = await res.json();
+      //const results = data.items;
+      setResult(data.linkEmbed);
+    }
+    fetchData();
+  }, []);
+
+  console.log(result);
   return (
     <>
       <div
@@ -36,7 +53,7 @@ function playMovie(props) {
           margin: "auto",
         }}
       >
-        {query.linkEmbed ? (
+        {query.linkEmbed || result ? (
           <iframe
             style={{
               marginLeft: "auto",
@@ -46,7 +63,7 @@ function playMovie(props) {
               marginTop: "100px",
               alignItems: "center",
             }}
-            src={query.linkEmbed}
+            src={query.linkEmbed ? query.linkEmbed : result}
             width="854"
             allow="autoplay"
             height="480"

@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/Slidebar.module.css";
+import Router from "next/router";
+
 
 const SlideBar = () => {
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState(null);
 
-  const slides = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [random, setRandom] = useState("fr");
+
+  const slides = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
 
   const slideStyles = {
     width: "100%",
@@ -56,7 +60,7 @@ const SlideBar = () => {
   // useEffect(() => {
   //   async function fetchData() {
   //     const res = await fetch(
-  //       `https://imdb-api.com/en/API/Search/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/night`
+  //       `https://imdb-api.com/en/API/Search/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${random}`
   //     );
   //     const data = await res.json();
   //     //const results = data.items;
@@ -66,6 +70,13 @@ const SlideBar = () => {
   //   }
   //   fetchData();
   // }, []);
+
+  const handlePlay = (e) => {
+    Router.push({
+      pathname: "../logged_in/playMovie",
+      query: e,
+    });
+  }
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const goToPrevious = () => {
@@ -80,14 +91,6 @@ const SlideBar = () => {
   };
   const goToSlide = (slideIndex) => {
     setCurrentIndex(slideIndex);
-  };
-  const slideStylesWidthBackground = {
-    ...slideStyles,
-    width: "65%",
-    height: "300px",
-    borderRadius: "0px 0px 500px 0px",
-
-    // transform: "skewX(20deg)"
   };
 
   return (
@@ -126,15 +129,15 @@ const SlideBar = () => {
             <div
               style={{
                 backgroundImage: `url(${result?.results[currentIndex].image})`,
-                width: "60%",
-                height: "280px",
+                width: "65%",
+                height: "350px",
                 borderRadius: "0px 0px 1000px 0px",
-                backgroundSize: "cover",
+                backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
               }}
             ></div>
 
-            <div>
+            <div style={{ marginLeft: "70px" }}>
               <div
                 style={{
                   position: "relative",
@@ -163,7 +166,7 @@ const SlideBar = () => {
                   fontSize: "22px",
                   marginTop: "20px",
                 }}
-              >
+               onClick={() => handlePlay(result?.results[currentIndex])} >
                 Watch now
               </div>
             </div>
