@@ -13,19 +13,23 @@ function playMovie(props) {
 
   const [result, setResult] = useState();
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(
-        `https://imdb-api.com/en/API/Trailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${query.id}`
-      );
-      const data = await res.json();
-      //const results = data.items;
-      setResult(data.linkEmbed);
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const res = await fetch(
+  //       `https://imdb-api.com/en/API/Trailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${query.id}`
+  //     );
+  //     const data = await res.json();
+  //     //const results = data.items;
+  //     setResult(data.linkEmbed);
+  //   }
+  //   fetchData();
+  // }, []);
 
-  console.log(result);
+  useEffect(() => {
+    
+  }, [query])
+  
+
   return (
     <>
       <div
@@ -63,7 +67,7 @@ function playMovie(props) {
               marginTop: "100px",
               alignItems: "center",
             }}
-            src={query.linkEmbed ? query.linkEmbed : result}
+            src={query?.linkEmbed ? query?.linkEmbed : result}
             width="854"
             allow="autoplay"
             height="480"

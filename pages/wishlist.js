@@ -91,7 +91,7 @@ function wishlist() {
                       onClick={() => handleRemoveWish(e.imDbId)}
                       title="Remove from Wishlist"
                       className={styles.play_icon_style}
-                      src="https://as1.ftcdn.net/v2/jpg/02/54/78/56/1000_F_254785625_fS7Ma2s8tMv40qdEQhv3WMPkc0cw20uX.jpg"
+                      src="https://cdn-icons-png.flaticon.com/512/762/762096.png"
                       alt="test"
                     />
                   </div>

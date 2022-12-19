@@ -1,6 +1,9 @@
 .HeaderContainer{
     height: 72px;
     margin-bottom: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 99;
 }
 
 .headd{

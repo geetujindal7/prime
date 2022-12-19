@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../../styles/Element.module.css";
 import MouseHover from "../../Components/MouseHover";
 
-function Reco2({ element, index }) {
+function Reco2({ element, index, handleRemove }) {
   const [isHover, setisHover] = useState();
 
   const handleMouseOver = () => {
@@ -12,6 +12,14 @@ function Reco2({ element, index }) {
   const handleMouseOut = () => {
     setisHover(false);
   };
+
+  const handleItem = (e) => {
+    Router.push({
+        pathname: "/logged_in/detailPage",
+        query: e
+      });
+}
+
   return (
     <div
       onMouseEnter={handleMouseOver}
@@ -22,7 +30,7 @@ function Reco2({ element, index }) {
         {index % 2 !== 0 && (
           <li>
           {isHover ? (
-              <MouseHover id={element.id} />
+              <MouseHover id={element.id} handleRemove={handleRemove} handleItem = {handleItem} element={element}/>
             ) : (
               <img
                 className={styles.image_container}

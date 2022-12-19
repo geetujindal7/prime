@@ -4,7 +4,7 @@ import styles from "../../../styles/Element.module.css";
 import MouseHover from '../../Components/MouseHover';
 
 
-function Reco({element, index}) {
+function Reco({element, index, handleRemove}) {
 
     const [isHover, setisHover] = useState()
 
@@ -22,18 +22,18 @@ function Reco({element, index}) {
               query: e
             });
       }
+
   return (
     <div
     onMouseEnter={handleMouseOver}
     onMouseLeave={handleMouseOut}
     key={index} 
-    onClick={() => handleItem(element)}
   >
     <ul>
       {index % 2 == 0 && (
         <li>
         {isHover ? (
-            <MouseHover id={element.id} />
+            <MouseHover id={element.id} handleRemove={handleRemove} handleItem = {handleItem} element={element}/>
           ) : (
             <img
               className={styles.image_container}

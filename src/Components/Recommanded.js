@@ -1324,7 +1324,17 @@ function Elements() {
     //   fetchData();
     // }, []);
 
-  
+  const handleRemove = (element) => {
+    console.log(element.id)
+    const Removeddata = data?.items?.filter((e) => e.id !== element.id)
+    setdata((prev) => ({  
+      ...prev,
+      items: Removeddata
+    }))
+   
+  }
+
+
 
 
   return (
@@ -1333,14 +1343,14 @@ function Elements() {
       <div className={styles.container}>
         {data?.items?.map((element, index) => {
           return (
-           <Reco element={element} key = {index} index={index}/>
+           <Reco element={element} key = {index} index={index} handleRemove={handleRemove}/>
           );
         })}
       </div>
       <div className={styles.container}>
         {data?.items?.map((element, index) => {
           return (
-           <Reco2 element={element} key = {index} index={index}/>
+           <Reco2 element={element} key = {index} index={index} handleRemove={handleRemove}/>
           );
         })}
       </div>
