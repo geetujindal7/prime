@@ -9,29 +9,29 @@ function detailPage() {
 
   const [state, setstate] = useState(
       {
-    imDbId: "tt21084334",
-    title: "I Heard the Bells",
-    fullTitle: "I Heard the Bells (2022)",
-    type: "Movie",
-    year: "2022",
-    videoId: "-rwloAZVDRY",
-    videoUrl: "https://www.youtube.com/watch?v=-rwloAZVDRY",
-    errorMessage: "",
+    // imDbId: "tt21084334",
+    // title: "I Heard the Bells",
+    // fullTitle: "I Heard the Bells (2022)",
+    // type: "Movie",
+    // year: "2022",
+    // videoId: "-rwloAZVDRY",
+    // videoUrl: "https://www.youtube.com/watch?v=-rwloAZVDRY",
+    // errorMessage: "",
   }
   );
 
 
-    //  useEffect(() => {
-    //     async function fetchData() {
-    //       const res = await fetch(
-    //           `https://imdb-api.com/en/API/YouTubeTrailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${query.id}`
-    //       );
-    //       const data = await res.json();
-    //       //const results = data.items;
-    //       setstate(data);
-    //     }
-    //     fetchData();
-    //   }, []);
+     useEffect(() => {
+        async function fetchData() {
+          const res = await fetch(
+              `https://imdb-api.com/en/API/YouTubeTrailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${query.id}`
+          );
+          const data = await res.json();
+          //const results = data.items;
+          setstate(data);
+        }
+        fetchData();
+      }, []);
 
   const handlePlay = (e) => {
     Router.push({
