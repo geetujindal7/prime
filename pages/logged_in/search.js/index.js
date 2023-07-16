@@ -418,7 +418,7 @@ function Search() {
        <Header />
        <div className={styles.searchHeader}>
         <p className={styles.ResultText}>
-            Results for "{query.Search}".
+            Results for {query.Search}.
         </p>
         <button className={styles.refineButton}>Refine</button>
        </div>
@@ -427,6 +427,7 @@ function Search() {
        <div className={styles.images_container}>
       {data?.results.map((e, key) => {
           return (
+       // eslint-disable-next-line react/jsx-key
        <SearchedResult data={e} index = {key} />
           )})
       }

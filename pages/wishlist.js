@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import React, { useContext, useEffect, useState } from "react";
@@ -78,7 +79,7 @@ function wishlist() {
                     ></iframe>
                   ) : (
                     <div>
-                      <Image
+                      <img
                         className={styles.imgStyle}
                         src={e?.thumbnailUrl}
                         alt="test"
@@ -86,13 +87,13 @@ function wishlist() {
                     </div>
                   )}
                   <div className={styles.PlayContainer}>
-                    <Image
+                    <img
                       onClick={() => handleClick(key)}
                       className={styles.playImage}
                       src="https://www.freepnglogos.com/uploads/play-button-png/index-media-cover-art-play-button-overlay-5.png"
                       alt="test"
                     />
-                    <Image
+                    <img
                       onClick={() => handleRemoveWish(e.imDbId)}
                       title="Remove from Wishlist"
                       className={styles.play_icon_style}

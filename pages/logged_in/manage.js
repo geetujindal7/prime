@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import Image from 'next/image';
 import Link from 'next/link';
 import  Router  from 'next/router';

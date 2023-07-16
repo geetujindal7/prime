@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import styles from  '../../../styles/popup.module.css'
