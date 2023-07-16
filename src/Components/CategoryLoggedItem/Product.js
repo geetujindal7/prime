@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/jsx-key */
 import React, { useEffect, useState } from "react";
 import items from "../Common/constant";
 import styles from "../../../styles/product.module.css"

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useState } from 'react'
 import  {AppContext}  from '../../../src/Context/ApiContext'
 import styles from '../../../styles/wishlist.module.css'
