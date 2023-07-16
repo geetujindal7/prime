@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
 import styles from "../../../styles/Slidebar.module.css";
 import Router from "next/router";

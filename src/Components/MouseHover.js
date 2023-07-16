@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../../styles/MouseHover.module.css";

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useContext, useEffect, useState } from "react";
 import styles from "../../../styles/Search.module.css";
 import { AppContext } from "../../Context/ApiContext";
