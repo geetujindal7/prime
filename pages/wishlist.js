@@ -62,7 +62,7 @@ function wishlist() {
                 <div>
                   {e?.linkEmbed !== null ?  (
                     <iframe
-                      src={`${e?.linkEmbed ? e?.linkEmbed : e?.videoUrl}?autoplay=1&width=300`}
+                      src={`${e?.linkEmbed ? e?.linkEmbed : e?.videoUrl}?autoplay=0&width=300`}
                       //allow='autoplay'
                       width="400"
                       height="246"
