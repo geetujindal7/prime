@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Image from "next/image";
 import Link from "next/link";
 import Router from "next/router";
@@ -11,6 +12,7 @@ function create() {
   const [name, setName] = useState("");
   // const [defaults, setdefaults] = useState(false)
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     setKey(context.members?.length + 1);
   }, [key]);

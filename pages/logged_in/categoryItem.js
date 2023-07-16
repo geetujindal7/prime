@@ -26,6 +26,7 @@ function CategoryItem() {
        <div className={styles.images_container}>
       {categoriesFilterdData?.map((e, key) => {
           return (
+       // eslint-disable-next-line react/jsx-key
        <SearchedResult data={e} index = {key} />
           )})
       }

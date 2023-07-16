@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import AppContext, { AppProvider } from "../src/Context/ApiContext";

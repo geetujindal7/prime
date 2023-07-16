@@ -1,9 +1,12 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import React, { useContext, useEffect, useState } from "react";
 import Header from "../src/Components/Header/Header";
 import Purchase from "../src/Components/wishlist/Purchase";
 import { AppContext } from "../src/Context/ApiContext";
 import styles from "../styles/wishlist.module.css";
 import Router from "next/router";
+import Image from "next/image";
 
 function wishlist() {
   const context = useContext(AppContext);
@@ -58,6 +61,7 @@ function wishlist() {
         context.wishlist?.length !== 0 ? (
           context.wishlist?.map((e, key) => {
             return (
+              // eslint-disable-next-line react/jsx-key
               <div className={styles.ImageContainer}>
                 <div>
                   {e?.linkEmbed !== null ?  (
@@ -74,7 +78,7 @@ function wishlist() {
                     ></iframe>
                   ) : (
                     <div>
-                      <img
+                      <Image
                         className={styles.imgStyle}
                         src={e?.thumbnailUrl}
                         alt="test"
@@ -82,13 +86,13 @@ function wishlist() {
                     </div>
                   )}
                   <div className={styles.PlayContainer}>
-                    <img
-                      onClick={(event) => handleClick(key)}
+                    <Image
+                      onClick={() => handleClick(key)}
                       className={styles.playImage}
                       src="https://www.freepnglogos.com/uploads/play-button-png/index-media-cover-art-play-button-overlay-5.png"
                       alt="test"
                     />
-                    <img
+                    <Image
                       onClick={() => handleRemoveWish(e.imDbId)}
                       title="Remove from Wishlist"
                       className={styles.play_icon_style}

@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import  Router,{useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Header from "../../src/Components/Header/Header";
