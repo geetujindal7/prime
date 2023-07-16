@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React from 'react'
 import items from '../Common/constant'
 import Product from './Product'
