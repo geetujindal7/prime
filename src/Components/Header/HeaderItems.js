@@ -21,8 +21,8 @@ const HeaderItems = () => {
       <div className={styles.Image_logo}>
         <Link href="/logged_in">
           <Image
-            width="120"
-            height="40"
+            width="70"
+            height="30"
             src="https://amazonuk.gcs-web.com/system/files-encrypted/nasdaq_kms/inline-images/Prime_Video_Logo.png"
             alt="test"
           />

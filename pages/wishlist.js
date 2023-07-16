@@ -11,6 +11,7 @@ function wishlist() {
   const [colorWishlist, setColorW] = useState("#fff");
   const [colorpurchase, setColorP] = useState("#8197a4");
 
+  console.log(context.wishlist)
 
   const handleItem = (a) => {
     settitle(a);
@@ -59,9 +60,9 @@ function wishlist() {
             return (
               <div className={styles.ImageContainer}>
                 <div>
-                  {e?.linkEmbed !== null ? (
+                  {e?.linkEmbed !== null ?  (
                     <iframe
-                      src={`${e?.linkEmbed}?autoplay=1&width=300`}
+                      src={`${e?.linkEmbed ? e?.linkEmbed : e?.videoUrl}?autoplay=1&width=300`}
                       //allow='autoplay'
                       width="400"
                       height="246"

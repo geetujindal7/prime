@@ -10,18 +10,18 @@ function MouseHover({ id, handleItem, element, handleRemove }) {
   const context = useContext(AppContext);
 
   const [data, setData] = useState({
-    // imDbId: "tt21084334",
-    // title: "I Heard the Bells",
-    // fullTitle: "I Heard the Bells (2022)",
-    // type: "Movie",
-    // year: "2022",
-    // videoId: "-rwloAZVDRY",
-    // videoUrl: "https://www.youtube.com/watch?v=-rwloAZVDRY",
-    // errorMessage: "",
+    imDbId: "tt21084334",
+    title: "I Heard the Bells",
+    fullTitle: "I Heard the Bells (2022)",
+    type: "Movie",
+    year: "2022",
+    videoId: "-GnlBq39zVU",
+    videoUrl: "https://www.youtube.com/embed/-GnlBq39zVU",
+    errorMessage: "",
   });
 
   const handleClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     Router.push({
       pathname: "logged_in/playMovie",
       query: data,
@@ -31,18 +31,18 @@ function MouseHover({ id, handleItem, element, handleRemove }) {
   const handlewish = (data) => {
     context.HandleWishlist(data);
   };
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(
-        `https://imdb-api.com/en/API/YouTubeTrailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${id}`
-      );
-      const data = await res.json();
-      console.log(data);
-      //const results = data.items;
-      setData(data);
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const res = await fetch(
+  //       `https://imdb-api.com/en/API/YouTubeTrailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${id}`
+  //     );
+  //     const data = await res.json();
+  //     console.log(data);
+  //     //const results = data.items;
+  //     setData(data);
+  //   }
+  //   fetchData();
+  // }, []);
 
   return (
     <>

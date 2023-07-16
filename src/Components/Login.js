@@ -24,10 +24,6 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorFound, setError] = useState("");
-  // const [login, setLogin] = useState(() => {
-  //   return getStorageValue('login', false);
-  // });
-
   const { authUser, loading } = useAuth();
   const router = useRouter();
   const { signInWithEmailAndPassword, sendPasswordResetEmail } = useAuth();
@@ -60,7 +56,6 @@ const Login = () => {
        if(authUser?.displayName ===  null){
         authUser.displayName = userData?.user?.displayName
        } 
-       
         context.setLogin(true)
          router.push('/logged_in')
       }
@@ -74,20 +69,13 @@ const Login = () => {
       
   }
 
-  useEffect(() => {
-    if (!loading && !authUser)
-    {
-      context.setLogin(false)
-      router.push('/')
-    }
-    else if(context.login){
-      router.push('/logged_in')
-    }
+  // useEffect(() => {
+  //   if(context.login){
+  //     router.push('/logged_in')
+  //   }
 
-    //sessionStorage.setItem('login', JSON.stringify(login));
-  }, [authUser, loading])
-
-  
+  //   //sessionStorage.setItem('login', JSON.stringify(login));
+  // }, [authUser, loading])
 
   return (
     <form onSubmit={loginHandler} className={styles.Sign_In_container}>

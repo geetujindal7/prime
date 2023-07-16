@@ -9,29 +9,29 @@ function detailPage() {
 
   const [state, setstate] = useState(
       {
-    // imDbId: "tt21084334",
-    // title: "I Heard the Bells",
-    // fullTitle: "I Heard the Bells (2022)",
-    // type: "Movie",
-    // year: "2022",
-    // videoId: "-rwloAZVDRY",
-    // videoUrl: "https://www.youtube.com/watch?v=-rwloAZVDRY",
-    // errorMessage: "",
+    imDbId: "tt21084334",
+    title: "I Heard the Bells",
+    fullTitle: "I Heard the Bells (2022)",
+    type: "Movie",
+    year: "2022",
+    videoId: "-GnlBq39zVU",
+    videoUrl: "https://www.youtube.com/embed/-GnlBq39zVU",
+    errorMessage: "",
   }
   );
 
 
-     useEffect(() => {
-        async function fetchData() {
-          const res = await fetch(
-              `https://imdb-api.com/en/API/YouTubeTrailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${query.id}`
-          );
-          const data = await res.json();
-          //const results = data.items;
-          setstate(data);
-        }
-        fetchData();
-      }, []);
+    //  useEffect(() => {
+    //     async function fetchData() {
+    //       const res = await fetch(
+    //           `https://imdb-api.com/en/API/YouTubeTrailer/${process.env.NEXT_PUBLIC_RAPID_API_HOST}/${query.id}`
+    //       );
+    //       const data = await res.json();
+    //       //const results = data.items;
+    //       setstate(data);
+    //     }
+    //     fetchData();
+    //   }, [state]);
 
   const handlePlay = (e) => {
     Router.push({
@@ -119,27 +119,29 @@ function detailPage() {
             </div>
           </div>
           <div style={{ justifyContent: "flex-end", display: "flex" }}>
-            <iframe
+            {
+              query?.image ? <img src={query?.image} height={600} width={800}></img> : (<iframe
               style={{
                 zIndex: "1",
                 position: "absolute",
                 top: "0",
                 justifyContent: "flex-end",
                 display: "flex",
-                opacity: "0.4",
+                // opacity: "0.4",
                 border: "none",
                 borderWidth: "0",
               }}
-              width="1100"
+              width="100%"
               height="600"
               src={`https://www.youtube.com/embed/${state?.videoId}?modestbranding=1&autohide=1&showinfo=0&controls=0&autoplay=1&mute=1&start=33&end=40&loop=1&playlist=${state?.videoId}`}
-              frameborder="0"
+              frameBorder="0"
               allowfullscreen
-            ></iframe>
+            ></iframe>)
+            }
           </div>
         </div>
       </div>
-        <div style={{display: "flex", marginTop: "45%", color: "#fff", fontSize: "24px", justifyContent: "center"}}>
+        <div style={{display: "flex", marginTop: "20px", color: "#fff", fontSize: "24px", justifyContent: "center"}}>
             <div style={{marginRight: "20px"}}>
                 Related
             </div>

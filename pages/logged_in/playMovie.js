@@ -11,7 +11,9 @@ function playMovie(props) {
     router.push("./");
   };
 
-  const [result, setResult] = useState();
+
+
+  const [result, setResult] = useState("https://www.youtube.com/embed/-GnlBq39zVU");
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -26,8 +28,9 @@ function playMovie(props) {
   // }, []);
 
   useEffect(() => {
-    
-  }, [query])
+    console.log(result)
+  }, [result])
+  
   
 
   return (
@@ -57,7 +60,7 @@ function playMovie(props) {
           margin: "auto",
         }}
       >
-        {query.linkEmbed || result ? (
+        {query?.linkEmbed || result ? (
           <iframe
             style={{
               marginLeft: "auto",
@@ -90,7 +93,7 @@ function playMovie(props) {
             width="1400"
             height="700"
             src={`https://www.youtube.com/embed/${query?.videoId}?modestbranding=1&autohide=1&showinfo=0&controls=0&autoplay=1&mute=1&start=33&end=40&loop=1&playlist=${query?.videoId}`}
-            frameborder="0"
+            frameBorder="0"
             allowfullscreen
           ></iframe>
         )}

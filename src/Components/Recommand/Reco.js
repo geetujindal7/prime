@@ -23,6 +23,10 @@ function Reco({element, index, handleRemove}) {
             });
       }
 
+      useEffect(() => {
+       console.log(isHover)
+      }, [isHover])
+
   return (
     <div
     onMouseEnter={handleMouseOver}

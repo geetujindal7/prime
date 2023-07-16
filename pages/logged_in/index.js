@@ -9,13 +9,19 @@ import Elements from "../../src/Components/Recommanded";
 import SignOut from "../../src/Components/Common/SignOut";
 import Categories from "../../src/Components/Common/categories";
 import Page from "../../src/Components/CategoryLoggedItem";
+import { useRouter } from "next/router";
 
 const LoggedIn = ({}) => {
   const {ShowProfileDetails, HandleMember, ShowCategoriesDropdown} = useContext(AppContext);
 
   const { authUser } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
+    if(authUser === null)
+    {
+      router.push("/");
+    }
     HandleMember(authUser?.displayName);
   }, [authUser]);
 
