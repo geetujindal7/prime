@@ -26,7 +26,7 @@ const Login = () => {
   const [errorFound, setError] = useState("");
   const { authUser, loading } = useAuth();
   const router = useRouter();
-  const { signInWithEmailAndPassword, sendPasswordResetEmail } = useAuth();
+  const { signInWithEmailAndPassword, sendPasswordResetEmail, createUserWithEmailAndPassword } = useAuth();
   const context = useContext(AppContext)
 
   const handleReset = (e) => {
@@ -47,10 +47,11 @@ const Login = () => {
 
   const loginHandler = (e) => {
       e.preventDefault();
+      
       signInWithEmailAndPassword(email, password)
     .then(userData => {
 
-      !userData.user.emailVerified && userData.user.sendEmailVerification();   
+      // !userData.user.emailVerified && userData.user.sendEmailVerification();   
       if(userData.user.emailVerified)
       {  
        if(authUser?.displayName ===  null){
@@ -60,6 +61,7 @@ const Login = () => {
          router.push('/logged_in')
       }
       else{
+        userData.user.sendEmailVerification()
         alert("Please verify your email")
       }
     })
@@ -69,13 +71,14 @@ const Login = () => {
       
   }
 
-  // useEffect(() => {
-  //   if(context.login){
-  //     router.push('/logged_in')
-  //   }
+  useEffect(() => {
+    // if(context.login){
+    //   router.push('/logged_in')
+    // }
+    console.log(authUser, loading)
 
-  //   //sessionStorage.setItem('login', JSON.stringify(login));
-  // }, [authUser, loading])
+    //sessionStorage.setItem('login', JSON.stringify(login));
+  }, [authUser, loading])
 
   return (
     <form onSubmit={loginHandler} className={styles.Sign_In_container}>

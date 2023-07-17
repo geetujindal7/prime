@@ -28,6 +28,7 @@ const LoggedIn = ({}) => {
     HandleMember(authUser?.displayName);
   }, [authUser]);
 
+  console.log(useAuth())
   return (
     <>
       <Head>

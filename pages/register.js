@@ -18,7 +18,6 @@ const Register = () => {
   const { createUserWithEmailAndPassword } = useAuth();
 
   const registerHandler = (e) => {
-    useAuth
       e.preventDefault();
       if(password.length < 6)
       {
@@ -42,10 +41,14 @@ const Register = () => {
     } 
   }
 
+  useEffect(() => {
+  console.log(createUserWithEmailAndPassword)
+  }, [createUserWithEmailAndPassword])
+
 
   return (
     <>
-    <form onSubmit={registerHandler} className={styles.Sign_In_container}>
+    <form  className={styles.Sign_In_container}>
       <div className={styles.PrimeImage}>
         <Image
           width="150"
@@ -122,7 +125,7 @@ const Register = () => {
           className={styles.input_signIn}
         ></input>
 
-        <button type="submit" className={styles.signInButton}>
+        <button onClick={() => registerHandler()} className={styles.signInButton}>
           Create your Amazon account
         </button>
         <p>
